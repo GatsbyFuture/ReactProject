@@ -1,26 +1,24 @@
 import React, { useState } from "react";
+// import Counter from "./companents/Counter";
+import './styles/App.css'
+import PostList from "./companents/PostList";
+import MyButton from "./companents/UI/button/MyButton";
 
 function App() {
-  const [likes, setLikes] = useState(5);
-  const [value, setValue] = useState("Text of input");
-  function increment() {
-    setLikes(likes + 1);
-  }
-
-  function decrement() {
-    setLikes(likes - 1);
-  }
+  const [posts, setPosts] = useState([
+    { id: 1, title: 'Javascript', body: 'Description' },
+    { id: 2, title: 'C#', body: 'Description 2' },
+    { id: 3, title: 'C++', body: 'Description 3' }
+  ])
 
   return (
     <div className="App">
-      <h1>{likes}</h1>
-      <h1>{value}</h1>
-      <input type="text"
-        value={value}
-        onChange={event => setValue(event.target.value)}
-      />
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
+      <form>
+        <input type="text" placeholder="title of post" />
+        <input type="text" placeholder="description of post" />
+        <MyButton>Create post</MyButton>
+      </form>
+      <PostList posts={posts} title="List of posts" />
     </div>
   );
 }
